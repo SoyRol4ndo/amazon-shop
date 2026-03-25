@@ -1,5 +1,5 @@
 import { CardSection } from "@/src/shared/ui/CardsSection";
-import { getProductsByCategory } from "@/src/shared/services/getProductsByCategory";
+import { getProductsByCategory } from "@/src/features/products/services/getProductsByCategory";
 import type { Product } from "@/src/shared/types/dummyjson";
 
 interface CategoryPageProps {

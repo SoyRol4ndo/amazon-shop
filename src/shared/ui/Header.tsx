@@ -21,7 +21,6 @@ export default function Header({ categories }: HeaderProps) {
     e.preventDefault();
     if (searchQuery.trim()) {
       router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
-      setSearchQuery("");
       setMenuOpen(false);
     }
   };

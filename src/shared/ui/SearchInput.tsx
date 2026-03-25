@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
 
 interface Props {
@@ -17,8 +18,9 @@ export const SearchInput = ({ searchQuery, setSearchQuery }: Props) => {
         className="w-full rounded-l-lg px-4 py-2 text-sm focus:outline-none border border-orange-400"
       />
       {searchQuery.trim() && (
-        <div
+        <Link
           onClick={() => setSearchQuery("")}
+          href={"/"}
           className="absolute right-16 top-2 cursor-pointer"
         >
           <svg
@@ -35,7 +37,7 @@ export const SearchInput = ({ searchQuery, setSearchQuery }: Props) => {
               d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
             />
           </svg>
-        </div>
+        </Link>
       )}
       <button
         type="submit"
