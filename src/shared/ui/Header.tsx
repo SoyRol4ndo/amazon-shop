@@ -5,18 +5,13 @@ import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { SearchInput } from "./SearchInput";
 import { NAV_LINKS } from "../constants/navLinks";
+import type { Category } from "@/src/shared/types/dummyjson";
 
-const CATEGORIES = [
-  "Electronics",
-  "Computers",
-  "Fashion",
-  "Home",
-  "Sports",
-  "Books",
-  "Toys",
-];
+interface HeaderProps {
+  categories: Category[];
+}
 
-export default function Header() {
+export default function Header({ categories }: HeaderProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
@@ -178,19 +173,19 @@ export default function Header() {
 
       {/* ── Categorías ─────────────────────────────────────────────────── */}
       <div className="bg-gray-800 border-t border-gray-700">
-        <div className="container mx-auto px-4 py-2 flex items-center gap-6 text-sm overflow-x-auto scrollbar-hide">
-          {CATEGORIES.map((cat) => (
+        <div className="bg-gray-800 container mx-auto px-4 py-2 flex items-center gap-6 text-sm overflow-x-auto categories-scroll">
+          {categories.map((cat) => (
             <Link
-              key={cat}
-              href={`/category/${cat.toLowerCase()}`}
+              key={cat.slug}
+              href={`/category/${cat.slug}`}
               onClick={() => setMenuOpen(false)}
               className={`whitespace-nowrap transition-colors shrink-0 ${
-                pathname === `/category/${cat.toLowerCase()}`
+                pathname === `/category/${cat.slug}`
                   ? "text-orange-400 font-medium"
                   : "hover:text-orange-400"
               }`}
             >
-              {cat}
+              {cat.name}
             </Link>
           ))}
         </div>

@@ -1,7 +1,7 @@
 import type { Product } from "@/src/shared/types/dummyjson";
 import Link from "next/link";
 
-export function DealCard({ product }: { product: Product }) {
+export function CardItem({ product }: { product: Product }) {
   const discountedPrice =
     product.price * (1 - product.discountPercentage / 100);
   const hasDiscount = product.discountPercentage > 0;

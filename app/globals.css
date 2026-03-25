@@ -1,1 +1,22 @@
 @import "tailwindcss";
+
+/* ── Scrollbar de la barra de categorías ─────────────────────────── */
+.categories-scroll {
+  background: #1f2937; /* gray-800 — cubre el track en todos los navegadores */
+  scrollbar-color: #fb923c #1f2937; /* Firefox: thumb track */
+  scrollbar-width: thin;
+}
+.categories-scroll::-webkit-scrollbar {
+  height: 4px;
+  background: #1f2937;
+}
+.categories-scroll::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+.categories-scroll::-webkit-scrollbar-thumb {
+  background: #fb923c; /* orange-400 */
+  border-radius: 9999px;
+}
+.categories-scroll::-webkit-scrollbar-thumb:hover {
+  background: #f97316; /* orange-500 */
+}

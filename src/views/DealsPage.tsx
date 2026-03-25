@@ -1,4 +1,4 @@
-import { DealsSection } from "../features/deals/components/DealsSection";
+import { CardSection } from "../shared/ui/CardsSection";
 import { getDeals } from "../features/deals/services/getDeals";
 import type { Product } from "../shared/types/dummyjson";
 
@@ -50,7 +50,7 @@ export const DealsPage = async () => {
           </p>
         </div>
       ) : (
-        <DealsSection products={products} />
+        <CardSection products={products} />
       )}
     </div>
   );
