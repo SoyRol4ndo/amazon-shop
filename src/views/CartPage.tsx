@@ -1,7 +1,8 @@
 "use client";
 
-import { useCartStore } from "@/src/features/cart/store/useCartStore";
 import Link from "next/link";
+import { useCartStore } from "@/src/features/cart/store/useCartStore";
+import { Banner } from "../shared/ui/Banner";
 
 export function CartPage() {
   const items = useCartStore((s) => s.items);
@@ -13,15 +14,14 @@ export function CartPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="mb-8 rounded-2xl bg-linear-to-r from-gray-900 to-gray-700 px-8 py-12 text-white">
-        <h1 className="text-4xl font-bold">Carrito de Compras</h1>
-        <p className="mt-2 text-gray-300">
-          {totalItems > 0
+      <Banner
+        title={"Carrito de Compras"}
+        subtitle={
+          totalItems > 0
             ? `${totalItems} producto${totalItems !== 1 ? "s" : ""} en tu carrito`
-            : "Tu carrito está vacío"}
-        </p>
-      </div>
-
+            : "Tu carrito está vacío"
+        }
+      />
       {items.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-24 text-gray-400">
           <svg

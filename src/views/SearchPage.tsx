@@ -1,5 +1,6 @@
 import { CardSection } from "@/src/shared/ui/CardsSection";
 import { searchProducts } from "@/src/features/search/services/searchProducts";
+import { Banner } from "../shared/ui/Banner";
 import type { Product } from "@/src/shared/types/dummyjson";
 
 interface SearchPageProps {
@@ -21,18 +22,16 @@ export async function SearchPage({ query }: SearchPageProps) {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="mb-8 rounded-2xl bg-linear-to-r from-gray-900 to-gray-700 px-8 py-12 text-white">
-        <h1 className="text-4xl font-bold">
-          {query ? `"${query}"` : "Buscar productos"}
-        </h1>
-        <p className="mt-2 text-gray-300">
-          {!query
+      <Banner
+        title={query ? `"${query}"` : "Buscar productos"}
+        subtitle={
+          !query
             ? "Escribe algo en el buscador para encontrar productos"
             : products.length > 0
               ? `${products.length} resultados encontrados`
-              : "Sin resultados para esta búsqueda"}
-        </p>
-      </div>
+              : "Sin resultados para esta búsqueda"
+        }
+      />
 
       {errorMsg ? (
         <div className="rounded-lg border border-red-200 bg-red-50 p-6 text-center">

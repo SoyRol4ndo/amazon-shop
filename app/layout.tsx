@@ -23,6 +23,9 @@ export const metadata: Metadata = {
   description:
     "Tu tienda online de confianza. Encuentra los mejores productos al mejor precio.",
   keywords: ["shop", "compras", "comprar", "tienda", "amazon"],
+  icons: {
+    icon: "/shop-icon.png",
+  },
 };
 
 export default async function RootLayout({
