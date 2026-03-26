@@ -1,5 +1,5 @@
 import { CardSection } from "../shared/ui/CardsSection";
-import { getDeals } from "../features/deals/services/getDeals";
+import { getDeals } from "../features/deals/store/getDeals";
 import type { Product } from "../shared/types/dummyjson";
 
 export const DealsPage = async () => {
