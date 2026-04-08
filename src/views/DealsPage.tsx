@@ -1,18 +1,9 @@
 import { CardSection } from "../shared/ui/CardsSection";
-import { getDeals } from "../features/deals/store/getDeals";
 import { Banner } from "../shared/ui/Banner";
-import type { Product } from "../shared/types/dummyjson";
+import { fetchGetDeals } from "../features/deals/helpers/fetchGetDeals";
 
 export const DealsPage = async () => {
-  let products: Product[] = [];
-  let errorMsg: string | null = null;
-
-  try {
-    products = await getDeals(20);
-  } catch (err) {
-    errorMsg =
-      err instanceof Error ? err.message : "No se pudieron cargar las ofertas.";
-  }
+  const { products, errorMsg } = await fetchGetDeals(20);
 
   return (
     <div className="container mx-auto px-4 py-8">

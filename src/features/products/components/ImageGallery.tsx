@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 interface ImageGalleryProps {
@@ -15,10 +16,12 @@ export function ImageGallery({ thumbnail, images, title }: ImageGalleryProps) {
   return (
     <div className="flex flex-col gap-4">
       <div className="aspect-square bg-gray-50 rounded-2xl overflow-hidden flex items-center justify-center p-8">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src={selected}
           alt={title}
+          width={120}
+          height={120}
+          priority
           className="h-full w-full object-contain"
         />
       </div>
@@ -29,17 +32,17 @@ export function ImageGallery({ thumbnail, images, title }: ImageGalleryProps) {
             <button
               key={i}
               onClick={() => setSelected(img)}
-              className={`shrink-0 w-20 h-20 rounded-lg bg-gray-50 border-2 overflow-hidden flex items-center justify-center p-1 transition-colors ${
+              className={`shrink-0 w-20 h-20 relative rounded-lg bg-gray-50 border-2 overflow-hidden flex items-center justify-center p-1 transition-colors ${
                 selected === img
                   ? "border-orange-400"
                   : "border-gray-200 hover:border-orange-300"
               }`}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src={img}
                 alt={`${title} ${i + 1}`}
-                className="h-full w-full object-contain"
+                fill
+                objectFit="contain"
               />
             </button>
           ))}

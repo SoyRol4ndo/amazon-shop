@@ -1,24 +1,12 @@
 import { CardSection } from "@/src/shared/ui/CardsSection";
-import { getProductsByCategory } from "@/src/features/products/services/getProductsByCategory";
-import type { Product } from "@/src/shared/types/dummyjson";
+import { fetchCategoryData } from "../features/products/helpers/fetchCategoryData";
 
 interface CategoryPageProps {
   slug: string;
 }
 
 export async function CategoryPage({ slug }: CategoryPageProps) {
-  let products: Product[] = [];
-  let errorMsg: string | null = null;
-
-  try {
-    products = await getProductsByCategory(slug, 20);
-  } catch (err) {
-    errorMsg =
-      err instanceof Error
-        ? err.message
-        : "No se pudieron cargar los productos.";
-  }
-
+  const { products, errorMsg } = await fetchCategoryData(slug);
   const title = slug
     .split("-")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
